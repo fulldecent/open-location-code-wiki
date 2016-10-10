@@ -6,5 +6,5 @@ This page lists the sites, apps and organisations that support Open Location Cod
 
 # Apps and sites
 
-* Google Search (web, maps, mobile maps) Search support for global and local codes (early 2016). Display of global codes in Android and iOS maps (September 2016).
+* Google Search (web, maps) Search support for global and local codes (early 2016). Display of global codes in [Android](https://play.google.com/store/apps/details?id=com.google.android.apps.maps) and [iOS](https://itunes.apple.com/app/id585027354) maps (September 2016).
 * [mapy.cz](mapy.cz) (mid 2016) Search support for global codes.
