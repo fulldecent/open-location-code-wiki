@@ -109,7 +109,7 @@ character. This causes codes over a boundary to be dissimilar even though
 they may be neighbours:
 
 .9x, g2, g7 and G2 code locations compared
-image::images/geohash36_grid.png[width=412,height=407,align="center"]
+image::https://github.com/google/open-location-code/blob/master/docs/images/geohash36_grid.png[width=412,height=407,align="center"]
 
 With just two levels, we can see that the cell "g2" (red, upper left of the
 cell marked g) is next to the cell 9X, but further from g7 (which is next to
@@ -177,7 +177,7 @@ Open Post Codes use a 5x5 grid, meaning that two different codes may be
 closer together than two highly similar codes:
 
 .8x, H2, H7 and J2 code locations compared
-image::images/openpostcode_grid.png[width=404,height=399,align="center"]
+image::https://github.com/google/open-location-code/blob/master/docs/images/openpostcode_grid.png[width=404,height=399,align="center"]
 
 With just two levels , we can see that the cell "H2" (red, upper left of the
 cell marked "H") is next to the cell "8X", but comparatively far from "H7"
