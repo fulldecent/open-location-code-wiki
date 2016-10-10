@@ -12,6 +12,12 @@ Some examples of it's usage are
 * "Will the postcard arrive if I put your plus code as the address?"
 * "Enter your plus code or street address here."
 
+## Global and local
+
+Codes that can be decoded to a lat/lng on their own, e.g. 796RWF8Q+WF are referred to as global codes.
+
+The shortened codes, e.g., WF8Q+WF are referred to as local codes.
+
 # Open Location Code
 When discussing with organisations or developers, refer to the library, algorithm and technology as "Open Location Code". This can be abbreviated to OLC, is capitalised, and shouldn't be translated.
 
