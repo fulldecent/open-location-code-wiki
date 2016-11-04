@@ -27,7 +27,7 @@ To support a global code, once you have the user query, match it against the abo
 
 A variant of the global code regex can be used to check whether a location query includes a local code:
 
-    /(^|\s)([23456789CFGHJMPQRVWX]{6}\+[23456789CFGHJMPQRVWX]{2,3})(\s|$)/?i
+    /(^|\s)([23456789CFGHJMPQRVWX]{4,6}\+[23456789CFGHJMPQRVWX]{2,3})(\s|$)/?i
 
 If the query matches, *and the user has not entered any other text*, then another location must be used to recover the original code. If you are displaying a map to the user, then use the current map center, pass it to the `recoverNearest()` method to get a global code, and then decode it as above.
 
