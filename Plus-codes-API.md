@@ -12,6 +12,8 @@
 * [Decoding Responses](#decoding-responses)
   * [Decoding Without An API Key](#decoding-without-an-api-key)
   * [Decoding With An API Key](#decoding-with-an-api-key)
+* [Securing Your API Key](#securing-your-api-key)
+  * [Allowing Multiple Referrers](#allowing-multiple-referrers)
 
 > This API is *experimental*. As of December 2016, we are soliciting feedback on the functionality, in order to inform proposals to geocoding API providers such as Google. You can discuss the API in the [public mailing list](https://groups.google.com/forum/#!forum/open-location-code) or create an issue in the [issue tracker](https://github.com/google/open-location-code/issues/new?labels=api&assignee=drinckes).
 
@@ -73,7 +75,8 @@ Encoding requests convert an address or latitude/longitude to a plus code.
 * `language` — The language in which to return results. This won't affect the global code, but it will affect the names of any features generated, as well as the address used for the local code.
  * If `language` is not supplied, results will be provided in English.
 * `key` — Your Google API key. This allows requests to be passed to the Google Geocoding API. To get a key refer [here](https://developers.google.com/maps/documentation/geocoding/start#get-a-key).
- * The API key **must** be a server side key without restrictions, with the Google Maps Geocoding API enabled.
+ * The API key **must** not have any restrictions, with the Google Maps Geocoding API enabled.
+ * See [Securing Your API Key](#securing-your-api-key) for how to prevent others from using your key.
 
 ## Encoding Responses
 
@@ -406,3 +409,51 @@ the `api_cost` field in the first result will have the value `2`. This is becaus
 **two** requests to the Google Geocoding API:
 * The first request locates "Praia, Cape Verde". That location is combined with the local code "WF8Q+WF" to generate a global code, "796RWF8Q+WF".
 * The second request reverse geocodes the center of that code, to provide the results and to enable the generation of the `local_code`, `local_address`, and `locality_place_id` fields.
+
+## Securing Your API Key
+
+> Securing your Google API key is important if you are using it from a website, where it can be easily detected.
+
+Google API keys provide access to different APIs, and most have a free daily quota allowance. If other people obtain your key, they can consume your free quota, and if you have billing enabled, can incur charges.
+
+The normal way of securing API keys is setting restrictions on the host calling the Google API or the IP addresses that can make requests. Because the calls to the Google API are being done from the plus codes server, these methods won't work.
+
+As a solution, you can send your host and Google API key and get them encrypted. When the plus codes API receives it, it will check that the host making the request was the original one, and if they are not, it will fail.
+
+For example, to protect the API key `my_api_key` for the site `openlocationcode.com`, you can encrypt it by calling:
+
+```
+https://plus.codes/key?referer=openlocationcode.com&key=my_api_key
+```
+
+This will respond with:
+
+```javascript
+{
+  "encryption_message": "Provide the encrypted key in the ekey parameter in your requests",
+  "encrypted_key": "kPc3Mn9sTPp1qoDF9yLoR%2FStyQjK6lMRZwJz6HdJQDJVPZJqZSKIDOigxNU%3D",
+  "status": "OK"
+}
+```
+
+Now, instead of setting the `key` parameter in your requests, use the parameter `ekey` with the value of the `encrypted_key` field in the above response. For example:
+
+```
+https://plus.codes/api?latlng=14.917313,-23.511313&ekey=kPc3Mn9sTPp1qoDF9yLoR%2FStyQjK6lMRZwJz6HdJQDJVPZJqZSKIDOigxNU%3D
+```
+
+If this value is used from any host other than `openlocationcode.com`, the call will fail and an error message displayed:
+
+```javascript
+{
+  "error_message": "Referer not valid",
+  "status": "INVALID_REQUEST"
+}
+```
+### Allowing Multiple Referrers
+
+If you need to use the same key from multiple different hosts, say `plus.codes` and `plus-codes.dev.site`, include the hosts in the referer like this:
+
+```
+https://plus.codes/key?referer=plus.codes|plus-codes.dev.site&key=my_api_key
+```
