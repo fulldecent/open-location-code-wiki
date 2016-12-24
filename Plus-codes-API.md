@@ -132,9 +132,11 @@ The `plus_code` structure gives the global code, the bounding box and center (`l
 
 ### Encoding With An API Key
 
-If a valid API key is provided in the `key` parameter of the request, the results will be the same as a [reverse geocode request](https://developers.google.com/maps/documentation/geocoding/intro#ReverseGeocoding), but with a `plus_code` structure added to every result.
+If a valid API key is provided in the `key` parameter of the request, the results for a latitude/longitude request will be the same as a [reverse geocode request](https://developers.google.com/maps/documentation/geocoding/intro#ReverseGeocoding), but with a `plus_code` structure added to every result.
 
-> To encode addresses, such as "1600 Amphitheatre Parkway, Mountain View, CA" it first needs to be geocoded to get the location. This requires the `key` parameter to be supplied.
+An address-based request will be the same as a [forward geocode request](https://developers.google.com/maps/documentation/geocoding/intro#geocoding), but with a `plus_code` structure added to every result.
+
+> To encode addresses, such as "1600 Amphitheatre Parkway, Mountain View, CA" the `key` parameter must be supplied.
 
 Below are the first two results of the latitude/longitude encoding request above, but this time with an API key:
 
@@ -356,7 +358,12 @@ The second structure doesn't have those fields, and the `global_code` is "796RWF
 
 ## Decoding Responses
 
-All responses are returned as JSON objects, and are identical to the encoding responses.
+All responses are returned as JSON objects. The contents of `results` differ according to the query:
+
+*  If the request was for a global code, a local code with a latitude/longitude or a local code with an address:
+  * `results` will contain a single entry, with the `plus_code` structure only.
+* If the request was for an address, say "1600 Amphitheatre Parkway, Mountain View, CA" or "Paris"
+  * `results` will contain the same entries that the Google Geocoding API returns, annotated with `plus_code` fields.
 
 ### Decoding Without An API Key
 
