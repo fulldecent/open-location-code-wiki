@@ -477,4 +477,4 @@ If you need to use the same encrypted key from multiple different hosts, say `pl
 https://plus.codes/key?referer=(plus.codes|.*plus-codes.dev.site)&key=my_api_key
 ```
 
->The `referer` field will be interpreted as a Go [regular expression](https://golang.org/pkg/regexp/).
+>The `referer` field will be interpreted as a Go [regular expression](https://golang.org/pkg/regexp/). Note that `+` characters need to be escaped to `%2B`.
