@@ -474,5 +474,7 @@ If this value is used from any host other than `openlocationcode.com`, the reque
 If you need to use the same encrypted key from multiple different hosts, say `plus.codes` and `plus-codes.dev.site`, include the hosts in the referer like this:
 
 ```
-https://plus.codes/key?referer=plus.codes|plus-codes.dev.site&key=my_api_key
+https://plus.codes/key?referer=(plus.codes)|(plus-codes.dev.site)&key=my_api_key
 ```
+
+>The `referer` field will be interpreted as a Go [regular expression](https://golang.org/pkg/regexp/).
