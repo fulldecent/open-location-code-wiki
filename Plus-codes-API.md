@@ -43,7 +43,7 @@ A Plus codes API request takes the following form:
   * A local code and latitude/longitude
 
 **Optional parameter:**
-
+* `email` — Provide an email address that can be used to contact you, in the event that it looks like your code is issuing a high number of requests that may impact the service.
 * `language` — The language in which to return results. This won't affect the global code, but it will affect the names of any features generated, as well as the address used for the local code.
  * If `language` is not supplied, results will be provided in English.
 
@@ -52,19 +52,19 @@ A Plus codes API request takes the following form:
 The following is a simple request with a latitude and longitude:
 
 ```
-https://plus.codes/api?address=14.917313,-23.511313
+https://plus.codes/api?address=14.917313,-23.511313&email=YOUR_EMAIL_HERE
 ```
 
 Or with a global code
 
 ```
-https://plus.codes/api?address=796RWF8Q%2BWF
+https://plus.codes/api?address=796RWF8Q%2BWF&email=YOUR_EMAIL_HERE
 ```
 
 Or with a local code and locality:
 
 ```
-https://plus.codes/api?address=WF8Q%2BWF%20Praia%20Cape%20Verde
+https://plus.codes/api?address=WF8Q%2BWF%20Praia%20Cape%20Verde&email=YOUR_EMAIL_HERE
 ```
 
 The result from all the above requests is the same, namely:
@@ -124,7 +124,7 @@ The locality tends to be larger rather than smaller, to make it more likely that
 The `address` parameter may match a large feature, such as:
 
 ```
-https://plus.codes/api?address=Paris
+https://plus.codes/api?address=Paris&email=YOUR_EMAIL_HERE
 ```
 
 In this case, the returned code may not have full precision. This is because for large features, the returned code will be the **largest** code that fits entirely **within** the bounding box of the feature:
