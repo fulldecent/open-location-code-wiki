@@ -2,11 +2,11 @@
 
 The wiki is where you can find out information about using the software, the codes, or the API.
 
-## Open Location Code or plus codes? I'm confused!
-
-Open Location Code is how we refer to the technology, but that's a horrible term to use when asking for someone's code.
+## Plus codes for the codes, Open Location Code for the technology
 
 Since the codes always have a plus sign in them (that's how you can recognise them), we use **plus codes** as the term for the codes themselves, and when talking about the project generally. See the [Naming Guidelines](https://github.com/google/open-location-code/wiki/Naming-guidelines) article for more information.
+
+Open Location Code is how we refer to the technology and the code libraries.
 
 ## Supporting plus codes in your app or site
 
