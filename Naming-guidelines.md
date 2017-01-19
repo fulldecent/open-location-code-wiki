@@ -6,17 +6,17 @@ We have chosen two names - one for the technology and one for the actual codes. 
 # Plus codes
 When showing codes to users or asking them for their code the **only** term that should be used is "plus code". It should not be capitalised (except when at the start of a sentence), abbreviated or used in forms like "plus+code". It can be translated though, for example, "código mais".
 
-Some examples of it's usage are
+Some examples of usage are
 * "My plus code is CX37+M9."
 * "I gave your plus code to the cab driver and he found the way without any problems."
 * "Will the postcard arrive if I put your plus code as the address?"
 * "Enter your plus code or street address here."
 
-## Global and local
+## Global and local codes
 
 Codes that can be decoded to a lat/lng on their own, e.g. 796RWF8Q+WF are referred to as global codes.
 
-The shortened codes, e.g., WF8Q+WF are referred to as local codes.
+The shortened codes, e.g., WF8Q+WF are referred to as local codes, because they work within a local area.
 
 # Open Location Code
 When discussing with organisations or developers, refer to the library, algorithm and technology as "Open Location Code". This can be abbreviated to OLC, is capitalised, and shouldn't be translated.
@@ -24,5 +24,5 @@ When discussing with organisations or developers, refer to the library, algorith
 It shouldn't be used to refer to the actual codes - don't say "Open Location Codes" for example.
 
 # Summary
-Having consistent names and presentation will make it easier for people to recognise what is meant, and make it easier for them to use and benefit from OLC.
+Having consistent names and presentation will make it easier for people to recognise what is meant, and make it easier for them to use and benefit from the project.
 
