@@ -8,13 +8,21 @@ Since the codes always have a plus sign in them (that's how you can recognise th
 
 Open Location Code is how we refer to the technology and the code libraries.
 
+## Displaying plus codes
+
+The first four digits of the code are termed the area code, the remaining digits the local code. When displaying a full code, the local code part should be bolded to make this distinction plain: 796R**WF8Q+WF**
+
+When displaying the local code on it's own or in combination with a locality, this is not necessary: WF8Q+WF Praia, Cape Verde
+
 ## Supporting plus codes in your app or site
 
 ### Online support
 
 If you want to support plus codes in a website or app, the big question is whether you can rely on being online? If the answer is yes, by far the easiest way to add support is to integrate with the [plus codes API](https://github.com/google/open-location-code/wiki/Plus-code-API).
 
-Using the API, in addition to the global code ("796RWF8Q+WF"), you can obtain the local code and address ("WF8Q+WF Praia, Cape Verde") from a latitude/longitude ("14.917313,-23.511313") with a single request. It also supports searching for mixed addresses, so if someone enters "9G8F+6X Zürich, Switzerland" you can make a single call to the API and discover they mean the Google office in Zürich.
+> Note that the API is experimental and may be turned off. Including an email address in your requests will ensure you can be contacted.
+
+Using the API, in addition to the global code ("796R**WF8Q+WF**"), you can obtain the local code and address ("WF8Q+WF Praia, Cape Verde") from a latitude/longitude ("14.917313,-23.511313") with a single request. It also supports searching for mixed addresses, so if someone enters "9G8F+6X Zürich, Switzerland" you can make a single call to the API and discover they mean the Google office in Zürich.
 
 These short codes can be used on Google search and in Maps and are more likely to be accepted by your users because they are easier to use and remember than the long ones.
 
