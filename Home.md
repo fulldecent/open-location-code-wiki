@@ -18,7 +18,7 @@ When displaying the local code on it's own or in combination with a locality, th
 
 ### Online support
 
-If you want to support plus codes in a website or app, the big question is whether you can rely on being online? If the answer is yes, by far the easiest way to add support is to integrate with the [plus codes API](https://github.com/google/open-location-code/wiki/Plus-code-API).
+If you want to support plus codes in a website or app, the big question is whether you can rely on being online? If the answer is yes, by far the easiest way to add support is to integrate with the [plus codes API](https://github.com/google/open-location-code/wiki/Plus-codes-API).
 
 > Note that the API is experimental and may be turned off. Including an email address in your requests will ensure you can be contacted.
 
