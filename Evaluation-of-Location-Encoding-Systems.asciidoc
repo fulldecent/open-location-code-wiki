@@ -176,11 +176,11 @@ Post Codes can be truncated a single character at a time.
 Open Post Codes use a 5x5 grid, meaning that two different codes may be
 closer together than two highly similar codes:
 
-.8x, H2, H7 and J2 code locations compared
+.8x, H2, H6 and J2 code locations compared
 image::https://github.com/google/open-location-code/blob/master/docs/images/openpostcode_grid.png[width=404,height=399,align="center"]
 
 With just two levels , we can see that the cell "H2" (red, upper left of the
-cell marked "H") is next to the cell "8X", but comparatively far from "H7"
+cell marked "H") is next to the cell "8X", but comparatively far from "H6"
 (which is next to "J2").
 
 Using Open Post Codes for Ireland, "KFLLLRFT" is the house next to
