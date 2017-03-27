@@ -4,8 +4,12 @@
 * [Functionality](#functionality)
 * [API Request Format](#api-request-format)
 * [Example Requests](#example-requests)
-* [Locality Requests](#locality-requests)
+  * [Locality Requests](#locality-requests)
 * [API Keys](#api-keys)
+  * [Obtaining A Google API Key](#obtaining-a-google-api-key)
+  * [Securing Your API Key](#securing-your-api-key)
+  * [Securing Your API Key With An HTTP Referrer](#securing-your-api-key-with-an-http-referrer)
+    * [Allowing Multiple Referrers](#allowing-multiple-referrers)
 
 > This API is *experimental*. As of December 2016, we are soliciting feedback on the functionality, in order to inform proposals to geocoding API providers such as Google. You can discuss the API in the [public mailing list](https://groups.google.com/forum/#!forum/open-location-code) or create an issue in the [issue tracker](https://github.com/google/open-location-code/issues/new?labels=api&assignee=drinckes).
 
@@ -168,7 +172,7 @@ In this case, the returned code may not have full precision. This is because for
 
 ## API Keys
 
-### Obtaining a Google API Key
+### Obtaining A Google API Key
 The Plus Codes API uses the [Google Maps Geocoding API](https://developers.google.com/maps/documentation/geocoding/intro)
 to search for and return addresses. If you want to be able to:
 *  search by address,
@@ -183,7 +187,7 @@ Important:
 
 Once you have your API key, you can specify it in requests using the `key` parameter, but you should read the next two sections on securing your key.
 
-### Securing your API key
+### Securing Your API Key
 
 Google API keys have a free daily quota allowance. If other people obtain your key, they can make requests to any API that is enabled for that key, consuming your free quota, and if you have billing enabled, can incur charges.
 
@@ -209,7 +213,7 @@ The plus codes API will respond with:
 }
 ```
 
-### Securing your API key with an HTTP referrer
+### Securing Your API Key With An HTTP Referrer
 
 For extra security, you can encrypt a hostname with the key. When the plus codes server decrypts the key, it checks that the HTTP referrer matches the encrypted hostname. This prevents the encrypted key from being used from another host.
 
