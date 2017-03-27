@@ -13,7 +13,7 @@
 
 > This API is *experimental*. As of December 2016, we are soliciting feedback on the functionality, in order to inform proposals to geocoding API providers such as Google. You can discuss the API in the [public mailing list](https://groups.google.com/forum/#!forum/open-location-code) or create an issue in the [issue tracker](https://github.com/google/open-location-code/issues/new?labels=api&assignee=drinckes).
 
-> If the API needs to be turned off, or there are other important messages, they will be returned in the JSON result in the field `error_message` or described on this page.
+> If the API needs to be turned off, or there are other important messages, they will be returned in the JSON result in the field `error_message`, described on this page, or sent to the [mailing list](https://groups.google.com/forum/#!forum/open-location-code).
 
 > Feb/March 2017: Google API keys are required for the generation of short codes and searching by address. See the [API Keys](#api-keys) section and the `key` parameter.
 
