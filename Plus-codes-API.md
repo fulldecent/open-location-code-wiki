@@ -11,7 +11,7 @@
 
 > If the API needs to be turned off, or there are other important messages, they will be returned in the JSON result in the field `error_message` or described on this page.
 
-> Feb/March 2017: Google API keys will be required for the generation of short codes and searching by address. See the [API Keys](#api-keys) section and the `ekey` parameter. Currently key encryption and usage can be tested. Keys will be **required** in API requests from March 6 2017.
+> Feb/March 2017: Google API keys are required for the generation of short codes and searching by address. See the [API Keys](#api-keys) section and the `key` parameter.
 
 ## Functionality
 
@@ -47,7 +47,7 @@ A Plus codes API request takes the following form:
 
 **Recommended parameters:**
 
-* `ekey` — An encrypted Google API key. See [API Keys](#api-keys). If this parameter is omitted, only latitude/longitude and global codes can be used in the `address` parameter, and locality information will not be returned.
+* `key` — An Google API key. See [API Keys](#api-keys). If this parameter is omitted, only latitude/longitude and global codes can be used in the `address` parameter, and locality information will not be returned. (This can also be specified using `ekey`.)
 * `email` — Provide an email address that can be used to contact you.
 * `language` — The language in which to return results. This won't affect the global code, but it will affect the names of any features generated, as well as the address used for the local code.
  * If `language` is not supplied, results will be provided in English.
@@ -168,26 +168,52 @@ In this case, the returned code may not have full precision. This is because for
 
 ## API Keys
 
-The Plus Codes API uses [Google Maps Geocoding API](https://developers.google.com/maps/documentation/geocoding/intro)
-to search for and return addresses. If you want to be able to search by address, or by short codes with localities, or you would like short codes and localities to be returned, you *must* provide an API key in your request.
+### Obtaining a Google API Key
+The Plus Codes API uses the [Google Maps Geocoding API](https://developers.google.com/maps/documentation/geocoding/intro)
+to search for and return addresses. If you want to be able to:
+*  search by address,
+*  search by short codes with localities, 
+*  or have short codes and localities included in responses
 
-To get a Google API key refer [here](https://developers.google.com/maps/documentation/geocoding/start#get-a-key).
+you *must* provide a Google API key in your request. To obtain a Google API key refer [here](https://developers.google.com/maps/documentation/geocoding/start#get-a-key).
 
 Important:
-*  The API key *must* not have any restrictions
 *  The API key *must* have the Google Maps Geocoding API enabled
+*  The API key *must* not have any restrictions (referrer, IP address)
+
+Once you have your API key, you can specify it in requests using the `key` parameter, but you should read the next two sections on securing your key.
 
 ### Securing your API key
 
-Google API keys provide access to different APIs, and most have a free daily quota allowance. If other people obtain your key, they can consume your free quota, and if you have billing enabled, can incur charges.
+Google API keys have a free daily quota allowance. If other people obtain your key, they can make requests to any API that is enabled for that key, consuming your free quota, and if you have billing enabled, can incur charges.
 
-The normal way of securing API keys is setting restrictions on the host calling the Google API or the IP addresses that can make requests. Because the calls to the Google API are being done from the plus codes server, not your site, these methods don't work.
+The normal way of securing API keys is setting restrictions on the host that can use it to call Google APIs. These methods won't work here, because the calls to the Google API are being done from the plus codes server.
 
-As a solution, the plus codes API let's you encrypt Google API key together with your host, and you use the encrypted value in the requests. When the plus codes API receives this, it decrypts the key and checks that the host making the request matches the encrypted value.
+Instead, you can encrypt your Google API key, and use the encrypted value in the requests to the plus codes API. The plus codes server will decrypt the key and use the decrypted value to make the calls to Google.
 
-If the host matches, then the requests are done. If the host does not match, a failure message is returned.
+If anyone obtains your encrypted API key, they cannot use it to make direct requests to any Google API. (They can still use it to make requests to the plus codes API, see the next section for a solution.)
 
-For example, to protect the Google API key `my_google_api_key` for the site `openlocationcode.com`, encrypt it like this:
+For example, to protect the Google API key `my_google_api_key`, encrypt it like this:
+
+```
+https://plus.codes/api?encryptkey=my_google_api_key
+```
+
+The plus codes API will respond with:
+
+```javascript
+{
+  "encryption_message": "Provide the key in the key= parameter in your requests",
+  "key": "8Kr54rKYBj8l8DcTxRj7NkvG%2Fe%2FlwvEU%2F4M41bPX3Zmm%2FZX7XoZlsg%3D%3D",
+  "status": "OK"
+}
+```
+
+### Securing your API key with an HTTP referrer
+
+For extra security, you can encrypt a hostname with the key. When the plus codes server decrypts the key, it checks that the HTTP referrer matches the encrypted hostname. This prevents the encrypted key from being used from another host.
+
+For example, to protect the Google API key `my_google_api_key`, and require the HTTP referrer host to be `openlocationcode.com`, encrypt it like this:
 
 ```
 https://plus.codes/api?referer=openlocationcode.com&encryptkey=my_google_api_key
@@ -197,20 +223,16 @@ The plus codes API will respond with:
 
 ```javascript
 {
-  "encryption_message": "Provide the encrypted key in the ekey parameter in your requests",
-  "encrypted_key": "Nn%2BzIy2LOz7sptIe4tkONei3xfO7MUPSyYdoNanqv%2F1wgDaGvUryUDt8EPXRS4xzP%2F0b04b3J6%2BzFeeu",
+  "encryption_message": "Provide the key in the key= parameter in your requests",
+  "key": "Nn%2BzIy2LOz7sptIe4tkONei3xfO7MUPSyYdoNanqv%2F1wgDaGvUryUDt8EPXRS4xzP%2F0b04b3J6%2BzFeeu",
   "status": "OK"
 }
 ```
 
-The `encrypted_key` field gives the value to specify for the `ekey` argument.
+#### Allowing Multiple Referrers
 
-If this value is used from any host other than `openlocationcode.com`, the request will fail and an error message displayed.
-
-### Allowing Multiple Referrers
-
-If you need to use the same encrypted key from multiple different hosts, say example1.com and example2.com, include the hosts in the referer like this:
+If you need to use the same encrypted key from multiple different hosts, say `example1.com` and `example2.com`, include the hosts in the referer like this:
 
 ```
-https://plus.codes/key?referer=example1.com|example2.com&key=my_api_key
+https://plus.codes/key?referer=example1.com|example2.com&key=my_google_api_key
 ```
