@@ -10,17 +10,14 @@ LibreOffice does sometimes have problems. This may be due to slightly unreliable
 
 ## Google Spreadsheets
 
-### Adding the Open Location Code Library to your spreadsheet
+### Here's one we made earlier
 
-1. Create a new Google Spreadsheet.
-1. Open the script editor (Tools > Script Editor). It will open a tab called _Untitled project_. The `Code.gs` panel is where you will create your functions, and it (probably) contains:
+[Here is a spreadsheet](https://docs.google.com/spreadsheets/d/1WN-j2cmAA05AAumpnhowcuAhUJZsAwpfNCy25wpfKL8/edit?usp=sharing) that uses the Open Location Code library and has functions to encode and decode a range of latitude and longitudes. Open the spreadsheet, then choose "File -> Make a copy" to get a copy that you can edit.
 
-     ```javascript
-     function myFunction() {
+### Adding the Open Location Code Library to an existing spreadsheet
 
-     }
-     ```
-
+1. Open a Google Spreadsheet.
+1. Open the script editor (Tools > Script Editor). It will open a new browser tab called _Untitled project_.
 1. Click on _Untitled project_, give your project a name in the popup, and click **Save**.
 1. Open the libraries panel (Resources > Libraries)
 1. Where it says **Add a library** enter
@@ -32,7 +29,7 @@ LibreOffice does sometimes have problems. This may be due to slightly unreliable
 
 ### Using the library from your spreadsheet
 
-Now the Open Location Code spreadsheet library is available for you to use in your `Code.gs` **script**, but you can't use it directly from the spreadsheet yet. You need to add a function in the `Code.gs` panel.
+The Open Location Code spreadsheet library is available for you to use in your `Code.gs` **script**, but you can't use it directly from the spreadsheet yet. You need to add a function in the `Code.gs` panel.
 
 Let's say you have a spreadsheet with some latitudes and longitudes, and you want to encode them into Open Location Codes:
 
@@ -51,6 +48,10 @@ To do this, create a function in the `Code.gs` panel that calls the Open Locatio
 function encode(range, len) {
   return OpenLocationCode.encoderange(range, len);
 }
+
+function decode(range, len) {
+  return OpenLocationCode.decoderange(range, len);
+}
 ```
 
 Now, in your spreadsheet, in cell C2, enter `=encode(A2:B4)`. After a couple of seconds, your sheet should contain:
@@ -64,7 +65,7 @@ Now, in your spreadsheet, in cell C2, enter `=encode(A2:B4)`. After a couple of 
 
 Because we used a range, we get codes for rows 3 and 4, even though our formula is **only** in row 2.
 
-### Why use this library?
+### Why use the App Script library?
 
 Google Spreadsheets uses [App Script](https://developers.google.com/apps-script/) - a Javascript-like language to add new functions. Calls to App Script functions are sent over the network to Google - this avoids scripts running in your browser (for security), but calling hundreds or thousands of functions may be blocked.
 
