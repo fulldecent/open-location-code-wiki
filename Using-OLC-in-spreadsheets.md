@@ -23,7 +23,11 @@ LibreOffice does sometimes have problems. This may be due to slightly unreliable
 
 1. Click on _Untitled project_, give your project a name in the popup, and click **Save**.
 1. Open the libraries panel (Resources > Libraries)
-1. Where it says **Add a library** enter `1tJz-3SxbCtp8kwaeDyUKFUs3Ui27aOW6c_7uErZ3xZNLGsGPJ3_W2ad7` and press **Add**. (This identifies the spreadsheet library that will provide Open Location Code functions.)
+1. Where it says **Add a library** enter
+    ```
+    1tJz-3SxbCtp8kwaeDyUKFUs3Ui27aOW6c_7uErZ3xZNLGsGPJ3_W2ad7
+    ```
+    and press **Add**. (This identifies the spreadsheet library that will provide Open Location Code functions.)
 1. When the _OpenLocationCode_ library appears, select the highest available version and press **Save**.
 
 ### Using the library from your spreadsheet
