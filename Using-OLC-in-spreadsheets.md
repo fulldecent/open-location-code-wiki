@@ -66,9 +66,9 @@ Because we used a range, we get codes for rows 3 and 4, even though our formula 
 
 ### Why use this library?
 
-Google Spreadsheets uses [App Script](https://developers.google.com/apps-script/) - a Javascript-like language to add new functions. Calls to App Script functions are sent over the network to Google - this avoids scripts taking over your browser, but they do mean that making hundreds or thousands of calls rapidly may be blocked.
+Google Spreadsheets uses [App Script](https://developers.google.com/apps-script/) - a Javascript-like language to add new functions. Calls to App Script functions are sent over the network to Google - this avoids scripts running in your browser (for security), but calling hundreds or thousands of functions may be blocked.
 
-It is possible to just cut and paste the [Javascript](https://github.com/google/open-location-code/blob/master/js/src/openlocationcode.js) implementation into your `Code.gs`, but the implementation of the Open Location Code library that we use above is more efficient by working with ranges, rather than individual latitude and longitudes.
+It is possible to just cut and paste the [Javascript](https://github.com/google/open-location-code/blob/master/js/src/openlocationcode.js) implementation into your `Code.gs`, but the implementation of the Open Location Code library that we use above is more efficient because it uses ranges, rather than individual latitude and longitudes.
 
 Note to maintainers: The library that we use above is defined in this [spreadsheet](https://docs.google.com/spreadsheets/d/1Yvew4fPhqG1UmCkGj28dM6G-0vzst_VuT7_8d048in8/edit). You can see the `encoderange()` function here and any other functions provided.
 
