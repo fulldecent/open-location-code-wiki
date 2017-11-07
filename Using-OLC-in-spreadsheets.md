@@ -17,8 +17,9 @@ LibreOffice does sometimes have problems. This may be due to slightly unreliable
 ### Adding the Open Location Code Library to an existing spreadsheet
 
 1. Open a Google Spreadsheet.
-1. Open the script editor (Tools > Script Editor). It will open a new browser tab called _Untitled project_.
-1. Click on _Untitled project_, give your project a name in the popup, and click **Save**.
+1. Open the script editor (Tools > Script Editor). It will open a new browser tab with the script editor.
+    1. If this is the first script in this spreadsheet, the tab will be called _Untitled project_.
+    1. Click on _Untitled project_, give your project a name in the popup, and click **Save**.
 1. Open the libraries panel (Resources > Libraries)
 1. Where it says **Add a library** enter
     ```
@@ -42,7 +43,7 @@ Let's say you have a spreadsheet with some latitudes and longitudes, and you wan
 
 The Open Location Code library has a method to create codes that takes a *range*. The range can have many rows, as long as it has two columns, and you will get an Open Location Code for every row.
 
-To do this, create a function in the `Code.gs` panel that calls the Open Location Code library. Edit your `Code.gs` to be:
+To do this, you need to create a function in the `Code.gs` panel that calls the Open Location Code library. Add the following to your `Code.gs`:
 
 ```javascript
 function encode(range, len) {
