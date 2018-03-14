@@ -22,7 +22,7 @@ We spent some time debating what attributes a location code should have. The
 list we came up with was, in no particular order:
 
  * Codes should be short enough that they can be memorised
- * A code should be sufficient on it's own, not requiring additional
+ * A code should be sufficient on its own, not requiring additional
  information such as country name
  * To prevent confusion, a place should have only one code
  * Codes should not include easily confused characters (e.g., 0 and O, 8 and
