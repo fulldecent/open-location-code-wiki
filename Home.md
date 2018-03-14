@@ -12,7 +12,7 @@ Open Location Code is how we refer to the technology and the code libraries.
 
 The first four digits of the code are termed the area code, the remaining digits the local code. When displaying a full code, the local code part should be bolded to make this distinction plain: 796R**WF8Q+WF**
 
-When displaying the local code on it's own or in combination with a locality, this is not necessary: WF8Q+WF Praia, Cape Verde
+When displaying the local code on its own or in combination with a locality, this is not necessary: WF8Q+WF Praia, Cape Verde
 
 ## Supporting plus codes in your app or site
 
