@@ -60,7 +60,7 @@ Make a call to a reverse geocoding backend, preferably one that returns structur
 Some geocoding backends are more suitable than others, so you might need to perform some tests.
 
 ## Ensuring the locality is near enough
-After reverse geocoding the location and extracting the locality name, you should make a call to a geocoding service to get the location of the locality. This is likely to be it's center, not the position of the plus code, and could be some distance away.
+After reverse geocoding the location and extracting the locality name, you should make a call to a geocoding service to get the location of the locality. This is likely to be its center, not the position of the plus code, and could be some distance away.
 
 You want it to be as close as possible, because other geocoding services are likely to position it slightly differently. If it is very close to half a degree away, another geocoding service could result in the plus code being decoded to a different location.
 
