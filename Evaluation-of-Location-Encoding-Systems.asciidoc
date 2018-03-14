@@ -34,7 +34,7 @@ list we came up with was, in no particular order:
  * Codes should represent an area, not a point, where the size of the area
  is variable
  * Shortening a code should represent a larger area that contains the
- original location. A side affect of this is that nearby codes will have a
+ original location. A side effect of this is that nearby codes will have a
  common prefix;
  * The code for a place should be deterministically generated, not requiring
  any setup or application
