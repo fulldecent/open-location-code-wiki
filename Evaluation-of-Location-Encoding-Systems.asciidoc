@@ -265,7 +265,7 @@ approximately 2.5km of the original location they can be shortened further,
 to just four to five characters.
 
 To aid recognition and memorisation, we include a separator to break the code
-into two parts, and to distinguise codes from postal codes.
+into two parts, and to distinguish codes from postal codes.
 
 In their short form, Open Location Codes have from four to seven characters.
 These can be used on their own within 50km of the place, or globally by
