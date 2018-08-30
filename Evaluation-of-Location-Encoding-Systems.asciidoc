@@ -256,8 +256,7 @@ information such as contact details, photos etc in addition to the location.
 
 We felt that the attributes of the above systems didn't sufficiently meet
 our requirements. As a result, we defined a new coding system and termed it
-Open Location Code; codes created using this system are referred to as 'plus
-'codes' (see the [[Naming Guidelines]]).
+Open Location Code; codes created using this system are referred to as 'plus codes' (see the link:https://github.com/google/open-location-code/wiki/Naming-Guidelines[Naming Guidelines]).
 
 Plus codes are 10 to 11 characters long. They can also be used in a
 short form of four to seven characters, similar to telephone numbers and
