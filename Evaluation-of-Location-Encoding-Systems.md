@@ -256,9 +256,10 @@ information such as contact details, photos etc in addition to the location.
 
 We felt that the attributes of the above systems didn't sufficiently meet
 our requirements. As a result, we defined a new coding system and termed it
-Open Location Code.
+Open Location Code; codes created using this system are referred to as 'plus
+'codes' (see the [[Naming Guidelines]]).
 
-Open Location Codes are 10 to 11 characters long. They can also be used in a
+Plus codes are 10 to 11 characters long. They can also be used in a
 short form of four to seven characters, similar to telephone numbers and
 postcodes, within approximately 50km of the original location. Within
 approximately 2.5km of the original location they can be shortened further,
@@ -267,12 +268,12 @@ to just four to five characters.
 To aid recognition and memorisation, we include a separator to break the code
 into two parts, and to distinguish codes from postal codes.
 
-In their short form, Open Location Codes have from four to seven characters.
+In their short form, plus codes have from four to seven characters.
 These can be used on their own within 50km of the place, or globally by
-providing a city or locality within that distance. Full Open Location Codes
+providing a city or locality within that distance. Full plus code
 require no other information to locate them.
 
-There is only one Open Location Code for a given location and area size.
+There is only one plus code for a given location and area size.
 Different codes can be generated with different areas, but they will share
 the leading characters.
 
@@ -286,15 +287,15 @@ billion possibilities, using a word list of 10,000 words from 30 languages.
 All possible sets were scored on whether they could spell the test words,
 and the most promising sets evaluated by hand.
 
-The character set used to form Open Location Codes is not contiguous. This
+The character set used to form plus codes is not contiguous. This
 is a result of removing easily confused characters, vowels and some other
 characters. This does make manually comparing codes difficult, as one has to
 remember whether there are characters between 9 and C in order to tell if
 8FV9 is next to 8FVC. However, we think that this is justified by the
 improved usability.
 
-Nearby places have similar Open Location Codes. There are three
-discontinuities, at longitude 180 and the north and south poles, where
+Nearby places have similar plus codes. There are three
+discontinuities, at longitude 180 and at the north and south poles, where
 nearby locations can have very different codes, but due to the low
 populations in these areas we feel this is an acceptable limitation.
 
@@ -304,19 +305,19 @@ latitudes are clipped to be greater than or equal to -90 and less than 90
 degrees, making representing the exact location of the North Pole impossible
 although it can be very closely approximated.
 
-Open Location Codes represent areas, and the size of the area depends on the
+Plus codes represent areas, and the size of the area depends on the
 code length. The longer the code, the smaller and more accurate the area.
 
-Truncating an Open Location Code increases the area and contains the
+Truncating an plus code increases the area and contains the
 original location.
 
 The codes are based on a simple encoding of latitude and longitude. The code
 for a place can be looked up by anyone and does not require any setup or
 configuration.
 
-Open Location Codes can be encoded and decoded offline.
+Plus codes can be encoded and decoded offline.
 
-Open Location Codes do not depend on any infrastructure, and so are not
+Plus codes do not depend on any infrastructure, and so are not
 dependent on any organisation or company for their continued existence or
 usage.
 
