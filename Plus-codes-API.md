@@ -66,17 +66,10 @@ A Plus codes API request takes the following form:
 
 ## Example Requests (no Google API key)
 
-The following is a simple request with a latitude and longitude:
+The following two requests show how to convert a latitude and longitude to a code, or how to get the geometry of a global code:
 
-```
-https://plus.codes/api?address=14.917313,-23.511313&email=YOUR_EMAIL_HERE
-```
-
-Or with a global code
-
-```
-https://plus.codes/api?address=796RWF8Q%2BWF&email=YOUR_EMAIL_HERE
-```
+*  https://plus.codes/api?address=14.917313,-23.511313&email=YOUR_EMAIL_HERE
+*  https://plus.codes/api?address=796RWF8Q%2BWF&email=YOUR_EMAIL_HERE
 
 Both of these requests will return the global code, it's geometry, and the center:
 
@@ -107,14 +100,13 @@ Both of these requests will return the global code, it's geometry, and the cente
 
 ## Example Requests (with Google API key)
 
-Here are some example requests. Include your Google API key in the request:
+Here are some example requests. You must include your Google API key in the request for these to work fully:
 
-```
-https://plus.codes/api?address=14.917313,-23.511313&ekey=YOUR_ENCRYPTED_KEY&email=YOUR_EMAIL_HERE
-https://plus.codes/api?address=796RWF8Q%2BWF&ekey=YOUR_ENCRYPTED_KEY&email=YOUR_EMAIL_HERE
-https://plus.codes/api?address=WF8Q%2BWF%20Praia%20Cape%20Verde&ekey=YOUR_ENCRYPTED_KEY&email=YOUR_EMAIL_HERE
+*  https://plus.codes/api?address=14.917313,-23.511313&ekey=YOUR_ENCRYPTED_KEY&email=YOUR_EMAIL_HERE
+*  https://plus.codes/api?address=796RWF8Q%2BWF&ekey=YOUR_ENCRYPTED_KEY&email=YOUR_EMAIL_HERE
+*  https://plus.codes/api?address=WF8Q%2BWF%20Praia%20Cape%20Verde&ekey=YOUR_ENCRYPTED_KEY&email=YOUR_EMAIL_HERE
 
-The result from all the above requests is the same, namely:
+These requests would all return:
 
 ```javascript
 
