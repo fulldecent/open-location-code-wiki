@@ -17,17 +17,25 @@
 
 > Feb/March 2017: Google API keys are required for the generation of short codes and searching by address. See the [API Keys](#api-keys) section and the `key` parameter.
 
+> October 2018: v2 of the API is launched that returns the same localities that are displayed in Google Maps. A side effect of this update is that the API should be slightly faster, and if API keys are used, the cost should be reduced.
+
+## History
+
+*  December 2016. v1 of API launched
+*  October 2018. v2 of API launched and made default.
+
 ## Functionality
 
 The API provides the following functions:
 
-*  Conversion of a location (lat/lng or address) to a plus code (including the bounding box and the center);
+*  Conversion of a latitude and longitude to a plus code (including the bounding box and the center);
 *  Conversion of a plus code to the bounding box and center.
 
-Additionally, it can use Google's locality information to:
+Additionally, it can use the [Google Geocoding API](https://developers.google.com/maps/documentation/geocoding/intro) to:
 
-*  Generate short codes and addresses (such as generating "WF8Q+WF Praia, Cape Verde" for "796RWF8Q+WF");
-*  Generate codes for addresses ("1600 Amphitheatre Parkway, Mountain View, CA") or features ("Paris").
+*  Include short codes and localities in the returned plus code (such as "WF8Q+WF Praia, Cape Verde" for "796RWF8Q+WF");
+*  Handle converting from a street address or business name to the plus code;
+*  Handle converting a short code and locality to the global code and coordinates.
 
 The results are provided in JSON format. The API is loosely modeled on the [Google Geocoding
 API](https://developers.google.com/maps/documentation/geocoding/intro).
@@ -47,7 +55,7 @@ A Plus codes API request takes the following form:
   * A street address
   * A global code
   * A local code and locality
-  * A local code and latitude/longitude
+  * ~~A local code and latitude/longitude~~ (Deprecated in v2 of the API)
 
 **Recommended parameters:**
 
@@ -56,58 +64,89 @@ A Plus codes API request takes the following form:
 * `language` — The language in which to return results. This won't affect the global code, but it will affect the names of any features generated, as well as the address used for the local code.
  * If `language` is not supplied, results will be provided in English.
 
-## Example Requests
+## Example Requests (no Google API key)
 
 The following is a simple request with a latitude and longitude:
 
 ```
-https://plus.codes/api?address=14.917313,-23.511313&ekey=YOUR_ENCRYPTED_KEY&email=YOUR_EMAIL_HERE
+https://plus.codes/api?address=14.917313,-23.511313&email=YOUR_EMAIL_HERE
 ```
 
 Or with a global code
 
 ```
-https://plus.codes/api?address=796RWF8Q%2BWF&ekey=YOUR_ENCRYPTED_KEY&email=YOUR_EMAIL_HERE
+https://plus.codes/api?address=796RWF8Q%2BWF&email=YOUR_EMAIL_HERE
 ```
 
-Or with a local code and locality:
-
-```
-https://plus.codes/api?address=WF8Q%2BWF%20Praia%20Cape%20Verde&ekey=YOUR_ENCRYPTED_KEY&email=YOUR_EMAIL_HERE
-```
-
-The result from all the above requests is the same, namely:
+Both of these requests will return the global code, it's geometry, and the center:
 
 ```javascript
 {
   "plus_code": {
-    "global_code": "796RWF9Q+4X",
+    "global_code": "796RWF8Q+WF",
     "geometry": {
       "bounds": {
         "northeast": {
-          "lat": 14.917874999999995,
-          "lng": -23.51000000000002
+          "lat": 14.917375000000007,
+          "lng": -23.511250000000018
         },
         "southwest": {
-          "lat": 14.917749999999998,
-          "lng": -23.510125000000016
+          "lat": 14.91725000000001,
+          "lng": -23.511375000000015
         }
       },
       "location": {
-        "lat": 14.917812499999997,
-        "lng": -23.510062500000018
+        "lat": 14.917312500000008,
+        "lng": -23.511312500000017
       }
     },
-    "local_code": "WF9Q+4X",
+  },
+  "status": "OK"
+}
+```
+
+## Example Requests (with Google API key)
+
+Here are some example requests. Include your Google API key in the request:
+
+```
+https://plus.codes/api?address=14.917313,-23.511313&ekey=YOUR_ENCRYPTED_KEY&email=YOUR_EMAIL_HERE
+https://plus.codes/api?address=796RWF8Q%2BWF&ekey=YOUR_ENCRYPTED_KEY&email=YOUR_EMAIL_HERE
+https://plus.codes/api?address=WF8Q%2BWF%20Praia%20Cape%20Verde&ekey=YOUR_ENCRYPTED_KEY&email=YOUR_EMAIL_HERE
+
+The result from all the above requests is the same, namely:
+
+```javascript
+
+  "plus_code": {
+    "global_code": "796RWF8Q+WF",
+    "geometry": {
+      "bounds": {
+        "northeast": {
+          "lat": 14.917375000000007,
+          "lng": -23.511250000000018
+        },
+        "southwest": {
+          "lat": 14.91725000000001,
+          "lng": -23.511375000000015
+        }
+      },
+      "location": {
+        "lat": 14.917312500000008,
+        "lng": -23.511312500000017
+      }
+    },
+    "local_code": "WF8Q+WF",
     "locality": {
-      "local_address": "Praia, Cape Verde",
-      "locality_place_id": "ChIJV_GnJLaQNQkR8sSzx_UCrKA"
+      "local_address": "Praia, Cape Verde"
     },
     "best_street_address": "Ave Machado Santos, Praia, Cape Verde"
   },
   "status": "OK"
 }
 ```
+
+## JSON Response Format
 
 The JSON response contains two root elements:
 
@@ -119,20 +158,17 @@ The JSON response contains two root elements:
 The `plus_code` structure has the following fields:
 *  `global_code` gives the global code for the latitude/longitude
 *  `bounds` provides the bounding box of the code, with the north east and south west coordinates
-*  `location` provides the center of the bounding box.
-*  `best_street_address` is Google's best guess of the street address. This might be a long way away, up to hundreds of meters and shouldn't be relied upon. It may not always be present.
+*  `location` provides the centre of the bounding box.
+*  `best_street_address` is Google's best guess of the street address. If present, this could be up to 500 meters away from the centre of the code.
 
 If a locality feature near enough and large enough to be used to shorten the code was found, the following fields will also be returned:
 *  `local_code` gives the local code relative to the locality
-*  `locality` provides the address of the locality and Google's unique identifier for the feature. See the [place ID overview](https://developers.google.com/places/place-id).
-
-The locality tends to be larger rather than smaller, to make it more likely that it will work on other systems.
+*  `locality` provides the name of the locality using `local_address`.
 
 If the `ekey` encrypted key is not provided the following fields will not be returned:
 *  `local_code`
 *  `locality`
 *  `local_address`
-*  `locality_place_id`
 *  `best_street_address`
 
 ### Locality Requests
@@ -173,8 +209,7 @@ In this case, the returned code may not have full precision. This is because for
 ## API Keys
 
 ### Obtaining A Google API Key
-The Plus Codes API uses the [Google Maps Geocoding API](https://developers.google.com/maps/documentation/geocoding/intro)
-to search for and return addresses. If you want to be able to:
+To search for addresses, return addresses, and return short codes and localities, the Plus Codes API uses the [Google Maps Geocoding API](https://developers.google.com/maps/documentation/geocoding/intro). If you want to be able to:
 *  search by address,
 *  search by short codes with localities, 
 *  or have short codes and localities included in responses
@@ -183,7 +218,7 @@ you *must* provide a Google API key in your request. To obtain a Google API key 
 
 Important:
 *  The API key *must* have the Google Maps Geocoding API enabled
-*  The API key *must* not have any restrictions (referrer, IP address)
+*  The API key *must* not have any restrictions (referrer, IP address). (This is because it is used to call the web service API, which does not allow restrictions on the key.)
 
 Once you have your API key, you can specify it in requests using the `key` parameter, but you should read the next two sections on securing your key.
 
