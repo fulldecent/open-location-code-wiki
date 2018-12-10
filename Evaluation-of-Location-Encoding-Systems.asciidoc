@@ -307,7 +307,7 @@ although it can be very closely approximated.
 Plus codes represent areas, and the size of the area depends on the
 code length. The longer the code, the smaller and more accurate the area.
 
-Truncating an plus code increases the area and contains the
+Truncating a plus code increases the area and contains the
 original location.
 
 The codes are based on a simple encoding of latitude and longitude. The code
