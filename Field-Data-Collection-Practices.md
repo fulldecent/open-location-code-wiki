@@ -54,17 +54,19 @@ ODK Collect will only use GPS locations when it can see a minimum number of sate
 
 A better solution is to use the manual location as a fallback to GPS. You can have one question that uses the GPS location (with or without a map), and a second question that gets the location manually, and only show that question if the GPS is not available, or the location accuracy was poor.
 
-If using the online editor, enter the following in the **Relevance** field for the manual location step:
+If using the online editor, enter the following in the **Relevance** field for the manual location field:
 ```
 not(boolean(/data/gps_location)) or number(/data/gps_location)>15
 ```
 
+(This assumes the data name of the GPS location field is `gps_location`.)
+
 If building your form in a spreadsheet, put the following in the **survey** tab:
 
-| type | name | label | hint | relevant | appearance |
-|------|------|-------|------|----------|------------|
-| geopoint | gps_location | GPS location | GPS must have a clear view of the sky! |  | maps
-| geopoint | manual_location | Manual location | Use this when GPS signal is not available or poor | not(boolean(${gps_location})) or number(${gps_location})>5 | placement-map
+| type | name | label | relevant | appearance |
+|------|------|-------|----------|------------|
+| geopoint | gps_location | GPS location |  | maps
+| geopoint | manual_location | Manual location | `not(boolean(${gps_location})) or number(${gps_location})>15` | placement-map
 
 # Configuring ODK Collect
 
