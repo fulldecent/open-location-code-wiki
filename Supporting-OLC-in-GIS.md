@@ -4,7 +4,12 @@ This page provides information about using OLC in GIS software.
 
 ## Tile Service
 
-If you want to visualise the OLC grid, you can start a [tile_server](https://github.com/google/open-location-code/tree/master/tile_server). This can serve either GeoJSON objects, one per OLC square, or PNG images that can be added as an overlay.
+If you want to visualise the OLC grid, you can use the [grid service](https://grid.plus.codes) to fetch the grid tiles.
+
+This is a shared service, and it may rate limit you. If you need to use the grid heavily, you can start your
+own [tile_server](https://github.com/google/open-location-code/tree/master/tile_server).
+
+The tile service provides GeoJSON objects, one per OLC square, or PNG images that can be added as an overlay.
 
 ## Software
 
