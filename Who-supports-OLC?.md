@@ -15,3 +15,4 @@ This page lists the sites, apps and organisations that support Open Location Cod
 * www.locusmap.eu (early 2018) Supports using global codes to set the map location
 * [OSMAnd](https://osmand.net/) OpenStreetMap based offline mobile maps and navigation - Supports displaying OLC as the "coordinates" of any point on earth.
 * [QGIS](https://qgis.org/) via [Lat Lon Tools](https://plugins.qgis.org/plugins/latlontools/) plug in - good support, points to olc, olc to points
+* [nicesi.com](https://nicesi.com/) (early 2019) Nicesi Location API support for global codes in [reverse geocoding service](https://nicesi.com/doc/#reverse-geocoding)
