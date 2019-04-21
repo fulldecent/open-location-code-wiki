@@ -1,4 +1,4 @@
-# Supporting Open Location Code technology in apps and sites
+# Supporting plus codes technology in apps and sites
 
 This page gives guidelines for how to support plus codes in a website or mapping application. These guidelines should make it clear that adding support for OLC is not onerous, but actually quite easy.
 
