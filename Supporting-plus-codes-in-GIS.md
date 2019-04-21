@@ -1,15 +1,15 @@
-# OLC in GIS software
+# Plus codes in GIS software
 
-This page provides information about using OLC in GIS software.
+This page provides information about using plus codes in GIS software.
 
 ## Tile Service
 
-If you want to visualise the OLC grid, you can use the [grid service](https://grid.plus.codes) to fetch the grid tiles.
+If you want to visualise the plus codes grid, you can use the [grid service](https://grid.plus.codes) to fetch the grid tiles.
 
 This is a shared service, and it may rate limit you. If you need to use the grid heavily, you can start your
 own [tile_server](https://github.com/google/open-location-code/tree/master/tile_server).
 
-The tile service provides GeoJSON objects, one per OLC square, or PNG images that can be added as an overlay.
+The tile service provides GeoJSON objects, one per plus codes square, or PNG images that can be added as an overlay.
 
 ## Software
 
@@ -36,9 +36,9 @@ In QGIS, you can generate a grid by clicking in the top Menu: Vector > Research 
 * You can set output as lines or polygons, your choice. Lines make simpler and smaller shapefiles.
 * And that should generate the grid for you. You can save that layer as a shapefile in any format.
 
-Note that this will not put any information about the pluscodes in your grid's metadata. They're just lines/boxes.
+Note that this will not put any information about the plus codes in your grid's metadata. They're just lines/boxes.
 
-But if you make polygons, then I can think of a roundabout way of adding pluscode values to those polygons (I have not done this myself yet):
+But if you make polygons, then I can think of a roundabout way of adding plus code values to those polygons (I have not done this myself yet):
 
 * Generate a centroid layer (Vector > Geometry Tools > Polygon Centroid) from the grid-polygons layer. This will place points inside each grid box. (in a new points layer.)
 * Install "Lat Lon Tools" plugin.
