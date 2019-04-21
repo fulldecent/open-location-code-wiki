@@ -55,7 +55,7 @@ Plus codes don't include the floor or apartment in high-rise buildings. If you l
 
 The reason for this is that plus codes need to be created without knowing specifically what is there. The other reason is that addresses in high-rise buildings are assigned differently in different parts of the world, and we don't need to change that.
 
-## Plus code precision
+### Plus code precision
 
 The precision of a plus code is indicated by the number of digits after the "+" sign.
 
