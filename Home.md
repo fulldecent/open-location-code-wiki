@@ -7,7 +7,8 @@ The wiki is where you can find out information about using the software, the cod
 *  [Frequently Asked Questions (FAQ)](/google/open-location-code/wiki/FAQ)
 *  [Naming Guidelines](/google/open-location-code/wiki/Naming-guidelines)
 ### Specification and technical implementation
-* [Open Location Code specification](https://github.com/google/open-location-code/blob/master/docs/olc_definition.adoc)
+* [Open Location Code specification](https://github.com/google/open-location-code/blob/master/docs/specification.md)
+* [Open Location Code Overview](https://github.com/google/open-location-code/blob/master/docs/olc_definition.adoc)
 * [An Evaluation of Location Encoding Systems](https://github.com/google/open-location-code/wiki/Evaluation-of-Location-Encoding-Systems)
 * [Guidance for shortening codes](https://github.com/google/open-location-code/wiki/Guidance-for-shortening-codes)
 ### Technical
