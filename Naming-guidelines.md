@@ -3,14 +3,14 @@ These guidelines are offered so that people see a consistent reference to the co
 
 We have chosen two names - one for the technology and one for the actual codes. The name for the codes reflects and reinforces the importance of the plus symbol, which is how the codes can be recognised.
 
-# Plus codes
-When showing codes to users or asking them for their code the **only** term that should be used is "plus code". It should not be capitalised (except when at the start of a sentence), abbreviated or used in forms like "plus+code". It can be translated though, for example, "código mais".
+# Plus Codes
+When referring to Plus Codes in English, the **only** term that should be used is "Plus Code", in Title Case.
 
-Some examples of usage are
-* "My plus code is CX37+M9."
-* "I gave your plus code to the cab driver and he found the way without any problems."
-* "Will the postcard arrive if I put your plus code as the address?"
-* "Enter your plus code or street address here."
+Some examples of usage are:
+* "My Plus Code is CX37+M9."
+* "I gave your Plus Code to the cab driver and he found the way without any problems."
+* "Will the postcard arrive if I put your Plus Code as the address?"
+* "Enter your Plus Code or street address here."
 
 ## Global and local codes
 
