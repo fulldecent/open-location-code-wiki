@@ -213,9 +213,7 @@ Natural Area Codes have a discontinuity at longitude 180 and at the poles.
 == Maidenhead Locator System (MLS)
 
 Maidenhead Locator System codes explicitly represent areas, and can be
-truncated in a similar way to Open Location Codes. The accuracy and length
-of the codes is similar, but Maidenhead Locator System codes include vowels
-and so the generated codes include words <<mls>>.
+truncated in a similar way to Open Location Codes. The accuracy and length of the codes is similar. MLS cannot generate words, but it can generate sequences that may appear to be words (e.g. when reading "1" as "l") <<mls>>.
 
 Maidenhead Locator System codes are based on an interleaving of latitude and
 longitude, and so are truncatable, and nearby locations have similar codes.
